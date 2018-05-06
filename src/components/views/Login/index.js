@@ -4,28 +4,32 @@ import {
   StyleSheet,
   Text,
   View,
-  Button
+  Button,
+  ScrollView
 } from 'react-native';
+
+import Logo from './logo';
 
 import LoadTabs from '../Tabs';
 
 class Login extends Component {
   render() {
     return (
-      <View>
-        <Text>Login</Text>
-        <Button
-          title="Ir a Home"
-          onPress={()=>{
-            LoadTabs();
-          }} />
-      </View>  
+      <ScrollView>
+        <View style={styles.container}>
+          <Logo />
+        </View>
+      </ScrollView>  
     );
   }
 }
 
 const styles = StyleSheet.create({
-  
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center'
+  }
 });
 
 export default Login;
