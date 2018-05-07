@@ -8,6 +8,7 @@ import {
   Image
 } from 'react-native';
 import BackImage from '../../../assets/images/loginPanel.jpg';
+import LoginForm from './loginForm';
 
 class LoginPanel extends Component {
 
@@ -43,7 +44,11 @@ class LoginPanel extends Component {
                         opacity:this.state.backImage
                     }}>
                     <Image
-                        style={styles.imageStyle} 
+                        style={
+                            this.props.orientation === 'portrait'
+                            ? styles.imageStylePortrait
+                            : styles.imageStyleLandscape
+                        } 
                         source={BackImage}
                         resizeMode={'contain'} />
                 </Animated.View>
@@ -55,11 +60,8 @@ class LoginPanel extends Component {
                             outputRange:[100,30]
                         })
                     }}>
-                    <Text>FORM</Text>
-                    <Text>FORM</Text>
-                    <Text>FORM</Text>
-                    <Text>FORM</Text>
-                    <Text>FORM</Text>
+                    <LoginForm 
+                    platform={this.props.platform} />
                 </Animated.View>
             </View>
         )
@@ -67,9 +69,13 @@ class LoginPanel extends Component {
 }
 
 const styles = StyleSheet.create({
-    imageStyle: {
+    imageStylePortrait: {
         width: 270,
         height: 150
+    },
+    imageStyleLandscape: {
+        width: 270,
+        height: 0
     }
 })
 

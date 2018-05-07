@@ -8,7 +8,7 @@ import {
   ScrollView
 } from 'react-native';
 
-import { getOrientation, setOrientationListener, removeOrientationListener } from '../../utils/misc';
+import { getOrientation, setOrientationListener, removeOrientationListener, getPlatform } from '../../utils/misc';
 
 import Logo from './logo';
 import LoginPanel from './loginPanel';
@@ -19,6 +19,7 @@ class Login extends Component {
     super(props)
 
     this.state = {
+      platform:getPlatform(),
       orientation: getOrientation(500),
       logoAnimation:false
     }
@@ -51,7 +52,8 @@ class Login extends Component {
             orientation={this.state.orientation} />
           <LoginPanel 
             show={this.state.logoAnimation}
-            orientation={this.state.orientation} />  
+            orientation={this.state.orientation}
+            platform={this.state.platform} />  
         </View>
       </ScrollView>  
     );
