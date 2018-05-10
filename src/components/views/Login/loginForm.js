@@ -8,6 +8,12 @@ import {
 } from 'react-native';
 
 import Input from '../../utils/forms/inputs';
+import ValidationRules from '../../utils/forms/validationRules';
+import LoadTabs from '../Tabs';
+
+import { connect } from 'react-redux';
+import { signUp } from '../../Store/actions/user_actions';
+import { bindActionCreators } from 'redux';
 
 class LoginForm extends Component {
 
@@ -22,6 +28,7 @@ class LoginForm extends Component {
                 valid:false,
                 type:"textinput",
                 rules:{
+                    isRequired:true,
                     isEmail:true
                 }
             },
@@ -30,6 +37,7 @@ class LoginForm extends Component {
                 valid:false,
                 type:"textinput",
                 rules:{
+                    isRequired:true,
                     minLength:6
                 }
             },
@@ -51,6 +59,11 @@ class LoginForm extends Component {
 
         let formCopy = this.state.form;
         formCopy[name].value = value;
+
+        let rules = formCopy[name].rules
+        let valid = ValidationRules(value, rules, formCopy);
+
+        formCopy[name].valid = valid;
 
         this.setState({
             form:formCopy
@@ -79,6 +92,46 @@ class LoginForm extends Component {
         })
     }
 
+    formHasErrors = () => (
+        this.state.hasErrors ?
+        <View style={styles.errorContainer}>
+            <Text style={styles.errorLabel}>Opps, verifica tu información</Text>
+        </View>
+        : null
+    )
+
+    submitUser = () => {
+        let isFormValid = true;
+        let formToSubmit = {};
+        const formCopy = this.state.form;
+
+        for(let key in formCopy){
+            if(this.state.type === 'Login'){
+                if(key !== 'confirmPassword'){
+                    isFormValid = isFormValid && formCopy[key].valid;
+                    formToSubmit[key] = formCopy[key].value;
+                }
+            } else {
+                isFormValid = isFormValid && formCopy[key].valid;
+                formToSubmit[key] = formCopy[key].value;
+            }
+        }
+
+        if(isFormValid){
+            if(this.state.type === "Login"){
+
+            } else {
+                this.props.signUp(formToSubmit).then(()=>{
+                    console.log("hola")
+                })
+            }
+        } else {
+            this.setState({
+                hasErrors:true
+            })
+        }
+    }
+
     render(){
         return(
             <View style={styles.formInputContainer}>
@@ -100,6 +153,7 @@ class LoginForm extends Component {
                 />
 
                 {this.confirmPassword()}
+                {this.formHasErrors()}
 
                 <View style={
                     this.props.platform === 'android'
@@ -109,7 +163,7 @@ class LoginForm extends Component {
                     <Button 
                         title={this.state.action}
                         color="#F2784B"
-                        onPress={() => alert('accion')}
+                        onPress={this.submitUser}
                     />
                 </View>
                 <View style={
@@ -127,7 +181,7 @@ class LoginForm extends Component {
                     <Button 
                         title="Lo hare luego"
                         color="lightgrey"
-                        onPress={() => alert('change')}
+                        onPress={() => LoadTabs()}
                     />
                 </View>
             </View>
@@ -145,7 +199,25 @@ const styles = StyleSheet.create({
     },
     buttonStyleIos: {
         marginBottom: 0
-    }
+    },
+    errorContainer: {
+        marginBottom:20,
+        marginTop: 10
+    },
+    errorLabel: {
+        color: 'red',
+        fontFamily: 'Roboto-Black'
+    },
 })
 
-export default LoginForm;
+function mapStateToProps(state){
+    return {
+        User: state.user
+    }
+}
+
+function mapDispatchToProps(dispatch){
+    return bindActionCreators({signUp}, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
