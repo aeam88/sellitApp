@@ -6,6 +6,8 @@ import {
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { connect } from 'react-redux';
+
 
 class SidedrawerComponent extends Component {
 	state = {
@@ -29,7 +31,7 @@ class SidedrawerComponent extends Component {
 			{
 				value: "Mis productos",
 				iconName: "th-list",
-				shouldGoTo: "sellitApp.AddPost",
+				shouldGoTo: "sellitApp.UserPosts",
 				typeLink: "view",
 				index: null,
 				privacy: true
@@ -45,7 +47,15 @@ class SidedrawerComponent extends Component {
 			iconStyle={{width:15}}
 			color="#ffffff"
 			size={18}
-			onPress={() => alert('click')}>
+			onPress={() => {
+				this.props.navigator.handleDeepLink({
+					link: button.shouldGoTo,
+					payload:{
+						typeLink: button.typeLink,
+						indexLink: button.index
+					}
+				})
+			}}>
 			<Text style={styles.buttonText}>{button.value}</Text>
 		</Icon.Button>
 	)
@@ -54,7 +64,10 @@ class SidedrawerComponent extends Component {
 		buttons.map( button => (
 			!button.privacy ? 
 				this.button(button)
-			:null
+			:
+			this.props.User.userData ?
+				this.button(button)
+			: null	
 		))
 	)
 
@@ -85,4 +98,13 @@ const styles = StyleSheet.create({
 	}
 })
 
-export default SidedrawerComponent;
+
+function mapStateToProps(state){
+	console.log(state)
+
+	return {
+		User: state.User
+	}
+}
+
+export default connect(mapStateToProps, null)(SidedrawerComponent)
