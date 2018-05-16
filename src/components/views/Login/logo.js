@@ -56,7 +56,7 @@ class Logo extends Component {
                             opacity: this.state.itAnim
                         }}
                     >
-                        <Text style={styles.it}>Cambio</Text>
+                        <Text style={styles.it}>cambio</Text>
                     </Animated.View>
                 </View>
             </View>
@@ -79,12 +79,12 @@ const styles = StyleSheet.create({
     },
     sell:{
         fontSize: 40,
-        fontFamily: 'RobotoCondensed-Regular',
+        fontFamily: 'mustardo',
         color: '#555555'
     },
     it: {
         fontSize: 40,
-        fontFamily: 'RobotoCondensed-Regular',
+        fontFamily: 'mustardo',
         color: '#F2784B'
     }
   });

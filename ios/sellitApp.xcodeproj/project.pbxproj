@@ -56,6 +56,7 @@
 		C883DA540D144950902A2935 /* RobotoCondensed-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B29539664C834E25B218C544 /* RobotoCondensed-Light.ttf */; };
 		C3739B0619364E35BC2BBF81 /* RobotoCondensed-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46FF80C71016413980DF0783 /* RobotoCondensed-LightItalic.ttf */; };
 		67FDD46AD75249CFB0CC2152 /* RobotoCondensed-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2283EB6EDF34E2B8C07E75B /* RobotoCondensed-Regular.ttf */; };
+		71052A4016ED4F599CE1F0BF /* mustardo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 810002BFE9E04826BD628FAD /* mustardo.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -381,6 +382,7 @@
 		B29539664C834E25B218C544 /* RobotoCondensed-Light.ttf */ = {isa = PBXFileReference; name = "RobotoCondensed-Light.ttf"; path = "../assets/Fonts/RobotoCondensed-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		46FF80C71016413980DF0783 /* RobotoCondensed-LightItalic.ttf */ = {isa = PBXFileReference; name = "RobotoCondensed-LightItalic.ttf"; path = "../assets/Fonts/RobotoCondensed-LightItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		B2283EB6EDF34E2B8C07E75B /* RobotoCondensed-Regular.ttf */ = {isa = PBXFileReference; name = "RobotoCondensed-Regular.ttf"; path = "../assets/Fonts/RobotoCondensed-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		810002BFE9E04826BD628FAD /* mustardo.ttf */ = {isa = PBXFileReference; name = "mustardo.ttf"; path = "../assets/Fonts/mustardo.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -666,6 +668,7 @@
 				B29539664C834E25B218C544 /* RobotoCondensed-Light.ttf */,
 				46FF80C71016413980DF0783 /* RobotoCondensed-LightItalic.ttf */,
 				B2283EB6EDF34E2B8C07E75B /* RobotoCondensed-Regular.ttf */,
+				810002BFE9E04826BD628FAD /* mustardo.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1135,6 +1138,7 @@
 				C883DA540D144950902A2935 /* RobotoCondensed-Light.ttf in Resources */,
 				C3739B0619364E35BC2BBF81 /* RobotoCondensed-LightItalic.ttf in Resources */,
 				67FDD46AD75249CFB0CC2152 /* RobotoCondensed-Regular.ttf in Resources */,
+				71052A4016ED4F599CE1F0BF /* mustardo.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

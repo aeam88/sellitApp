@@ -6,8 +6,8 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest"
   },
-  "rnpm":{
-    "assets":[
+  "rnpm": {
+    "assets": [
       "./assets/Fonts"
     ]
   },
@@ -16,6 +16,7 @@
     "react": "16.3.1",
     "react-native": "0.55.3",
     "react-native-navigation": "1.1.381",
+    "react-native-vector-icons": "4.5.0",
     "react-redux": "5.0.7",
     "redux": "3.7.2",
     "redux-promise": "0.5.3"

@@ -12,8 +12,10 @@ import ValidationRules from '../../utils/forms/validationRules';
 import LoadTabs from '../Tabs';
 
 import { connect } from 'react-redux';
-import { signUp } from '../../Store/actions/user_actions';
+import { signUp, signIn } from '../../Store/actions/user_actions';
 import { bindActionCreators } from 'redux';
+
+import { setTokens } from '../../utils/misc';
 
 class LoginForm extends Component {
 
@@ -100,6 +102,17 @@ class LoginForm extends Component {
         : null
     )
 
+    manageAccess = () => {
+        if (!this.props.User.userData.uid) {
+            this.setState({hasErrors:true})
+        } else {
+            setTokens(this.props.User.userData,() => {
+                this.setState({hasErrors:false});
+                LoadTabs();
+            })
+        }
+    }
+
     submitUser = () => {
         let isFormValid = true;
         let formToSubmit = {};
@@ -119,10 +132,12 @@ class LoginForm extends Component {
 
         if(isFormValid){
             if(this.state.type === "Login"){
-
+                this.props.signIn(formToSubmit).then(() => {
+                    this.manageAccess()
+                })
             } else {
                 this.props.signUp(formToSubmit).then(()=>{
-                    console.log("hola")
+                    this.manageAccess()
                 })
             }
         } else {
@@ -131,6 +146,7 @@ class LoginForm extends Component {
             })
         }
     }
+
 
     render(){
         return(
@@ -212,12 +228,12 @@ const styles = StyleSheet.create({
 
 function mapStateToProps(state){
     return {
-        User: state.user
+        User: state.User
     }
 }
 
 function mapDispatchToProps(dispatch){
-    return bindActionCreators({signUp}, dispatch)
+    return bindActionCreators({signUp,signIn}, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
