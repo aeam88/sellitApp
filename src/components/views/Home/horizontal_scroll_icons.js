@@ -44,9 +44,12 @@ class HorizontalScrollIcons extends Component {
 					<Icon.Button
 						name={categoriesIcons(item)}
 						iconStyle={{ marginRight: 10, marginLeft:3 }}
-						backgroundColor='#c1c1c1'
+						backgroundColor={
+							this.props.categorySelected !== item  ? '#c1c1c1' : '#F2784B'
+							}
 						size={20}
-						borderRadius={100}>
+						borderRadius={100}
+						onPress={() => this.props.updateCategoryHandler(item)}>
 
 						<Text style={{ color:'#ffffff', marginRight:5 }}>{item}</Text>
 
