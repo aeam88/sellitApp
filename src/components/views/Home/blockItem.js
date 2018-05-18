@@ -32,7 +32,7 @@ const BlockItem = (props) => {
     const block = ({item,i}) => (
         <View style={styles.blockRow}>
             <TouchableOpacity
-                onPress={() => alert('Ir al articulo')}
+                onPress={() => props.goto(item.blockOne)}
                 style={{flex:2}}>
                 <View style={[styles.blockGridStyle, styles.blockGridStyleLeft]}>
                     {itemImage()}
@@ -40,7 +40,7 @@ const BlockItem = (props) => {
                 </View>
             </TouchableOpacity>
             <TouchableOpacity
-                onPress={() => alert('Ir al articulo')}
+                onPress={() => props.goto(item.blockTwo)}
                 style={{flex:2}}>
                 <View style={[styles.blockGridStyle, styles.blockGridStyleRight]}>
                     {itemImage()}
