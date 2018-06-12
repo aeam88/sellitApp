@@ -21,7 +21,7 @@ const navLeftButton = (sources) => {
     }
 }
 
-const LoadTabs = () => {
+const LoadTabs = (allow) => {
 
     Promise.all([
         Icon.getImageSource('bars',20,'white'),
@@ -41,7 +41,7 @@ const LoadTabs = () => {
                     }
                 },
                 {
-                    screen:"sellitApp.AddPost",
+                    screen: allow ? "sellitApp.AddPost" : "sellitApp.NotAllow",
                     label:"Cambiar",
                     title:"Cambiar",
                     icon: sources[1],

@@ -3,7 +3,8 @@ import {
   StyleSheet,
   Text,
   View,
-  TextInput
+  TextInput,
+  Picker
 } from 'react-native';
 
 const input = (props) => {
@@ -16,6 +17,20 @@ const input = (props) => {
                 {...props}
                 style={[styles.input, props.overrideStyle]}
             />
+        break;
+        case "picker":
+        template = 
+        <Picker
+            selectedValue={props.value}
+            {...props}
+            mode="dropdown"
+        >
+            {
+                props.options.map((item, i) => (
+                    <Picker.Item key={i} label={item} value={item} />
+                ))
+            }
+        </Picker>
         break;
         default:
             return template    
