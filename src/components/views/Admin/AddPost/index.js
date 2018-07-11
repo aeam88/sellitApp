@@ -60,19 +60,19 @@ class AddPost extends Component {
         	<ScrollView>
           		<View style={styles.formInputContainer}>
             		<View style={styles.formInputInnerContainer}>
-            		  <Text style={styles.mainTitle}>Cambia tus cosas</Text>
+            		  	<Text style={styles.mainTitle}>Cambia tus cosas</Text>
             		</View>
             		<View style={styles.twoColumnsContainer}>
               			<View style={{ flex: 1 }}>
-              			  <Text style={{ marginLeft: 15 }}>Seleccione una categoría</Text>
+              			  	<Text style={{ marginLeft: 15 }}>Seleccione una categoría</Text>
               			</View>
               			<View style={{ flex: 1 }}>
                 			<Input 
-                			  placeholder="Selecciona una categoria"
-                			  type={this.state.form.category.type}
-                			  value={this.state.form.category.value}
-                			  onValueChange={ value => this.updateInput("category", value) }
-                			  options={this.state.form.category.options}
+                			  	placeholder="Selecciona una categoria"
+                			  	type={this.state.form.category.type}
+                			  	value={this.state.form.category.value}
+                			  	onValueChange={ value => this.updateInput("category", value) }
+                			  	options={this.state.form.category.options}
                 			/>
               			</View>
             		</View>
@@ -83,24 +83,24 @@ class AddPost extends Component {
 }
 
 const styles = StyleSheet.create({
-  formInputContainer: {
-    flex: 1,
-    flexDirection: 'column'
-  },
-  formInputInnerContainer: {
-    flex: 1,
-    alignItems: 'center'
-  },
-  mainTitle: {
-    fontFamily: 'Roboto-Black',
-    fontSize: 30,
-    color: '#F2784B',
-    marginTop: 20
-  },
-  twoColumnsContainer: {
-    flexDirection: 'row',
-    alignItems: 'center'
-  }
+  	formInputContainer: {
+  	  	flex: 1,
+  	  	flexDirection: 'column'
+  	},
+  	formInputInnerContainer: {
+  	  	flex: 1,
+  	  	alignItems: 'center'
+  	},
+  	mainTitle: {
+  	  	fontFamily: 'Roboto-Black',
+  	  	fontSize: 30,
+  	  	color: '#F2784B',
+  	  	marginTop: 20
+  	},
+  	twoColumnsContainer: {
+    	flexDirection: 'row',
+    	alignItems: 'center'
+  	}
 });
 
 export default AddPost;
